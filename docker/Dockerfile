@@ -2,7 +2,7 @@
 # Nginx Builder
 #############
 
-FROM debian:buster-slim as nginxbuilder
+FROM debian:bullseye as nginxbuilder
 
 ARG OPENRESTY_VERSION
 ARG LUA_VERSION
@@ -33,7 +33,7 @@ RUN /tmp/build-openresty
 # Final Image
 #############
 
-FROM debian:buster-slim
+FROM debian:bullseye
 LABEL maintainer="Jamie Curnow <jc@jc21.com>"
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -51,7 +51,7 @@ RUN apt-get update \
 	jq \
 	libncurses6 \
 	libpcre3 \
-	libreadline7 \
+	libreadline-dev \
 	openssl \
 	perl \
 	tzdata \
